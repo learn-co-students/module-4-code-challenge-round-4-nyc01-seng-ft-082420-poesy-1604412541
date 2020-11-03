@@ -10,11 +10,11 @@ const PoemsContainer = (props) => {
       return <Poem
         key = {poem.id}
         poem = {poem}
+        favPoem = {props.favPoem}
         />
     })
   }
 
-    console.log(props)
     return (
       <div className="poems-container">
         {

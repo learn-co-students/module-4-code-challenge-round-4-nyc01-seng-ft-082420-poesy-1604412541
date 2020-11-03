@@ -18,6 +18,19 @@ class App extends React.Component {
     })
   }
 
+  favoritePoem = (favPoem) => {
+    this.setState({
+      favs: [...this.state.favs, favPoem]
+    })
+  }
+
+  unFavorite = (unFav) => {
+    let newFavs = this.state.favs.filter(favs => favs.id !== unFav.id)
+    this.setState({
+      favs: newFavs
+    })
+  }
+
   renderPoems = () => {
     return this.state.poems
   }
@@ -41,8 +54,14 @@ class App extends React.Component {
           <button onClick = {this.formClickHandler}>Show/hide new poem form</button>
           {this.state.showForm ?  <NewPoemForm addPoem = {this.addNewPoem}/> : false }
         </div>
-        <PoemsContainer poems = {arrayOfPoems} />
-        <Favorites poems = {arrayOfFavorites} />
+        <div>
+          <h2> Poems</h2>
+          <PoemsContainer poems = {arrayOfPoems} favPoem = {this.favoritePoem}/>
+        </div>
+        <div>
+          <h2>Favorites</h2>
+          <Favorites poems = {arrayOfFavorites} unFav = {this.unFavorite}/>
+        </div>
       </div>
     );
   }

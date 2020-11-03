@@ -8,6 +8,7 @@ class Favorites extends React.Component {
       return <Poem
         key = {poem.id}
         poem = {poem}
+        favorite = ""
         />
     })
   }
