@@ -6,7 +6,8 @@ import NewPoemForm from "./NewPoemForm";
 class App extends React.Component {
 
   state={
-    poems: []
+    poems: [],
+    clicked: false
   }
 
   componentDidMount(){
@@ -20,12 +21,19 @@ class App extends React.Component {
       .catch(console.log)
   }
 
+
+  clickHandler = () => {
+    this.setState((previousState) => ({
+      clicked: !previousState.clicked
+    }))
+  }
+
   render() {
     return (
       <div className="app">
         <div className="sidebar">
-          <button>Show/hide new poem form</button>
-          {false && <NewPoemForm />}
+          <button onClick={this.clickHandler}>Show/hide new poem form</button>
+          {this.state.clicked && <NewPoemForm />}
         </div>
         <PoemsContainer poems={this.state.poems}/>
       </div>
