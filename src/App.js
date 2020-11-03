@@ -21,7 +21,7 @@ class App extends React.Component {
   }
 
   clickHandler = () => {
-    console.log("clicked")
+    // console.log("clicked")
     this.setState(prevState => ({
       showForm: !prevState.showForm
     }))
@@ -37,7 +37,7 @@ addNewPoem = (newPoem) => {
 }
 
   render() {
-    console.log(this.state)
+    // console.log(this.state)
     return (
       <div className="app">
         <div className="sidebar">
