@@ -23,8 +23,6 @@ class NewPoemForm extends React.Component {
     .then(r=>r.json())
     .then(newPoem => this.props.addPoem(newPoem))
 
-
-
   }
 
   changeHandler = (e) => {
