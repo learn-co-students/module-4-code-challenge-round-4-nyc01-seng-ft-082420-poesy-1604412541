@@ -9,6 +9,7 @@ class PoemsContainer extends React.Component {
       key={poem.id}
       poemObj={poem}
       addFavorite={this.props.addFavorite}
+      removePoemHandler={this.props.removePoemHandler}
     />)
   }
 

@@ -20,6 +20,10 @@ class Poem extends React.Component {
     })
   }
 
+  handleDeletePoem = () => {
+    this.props.removePoemHandler(this.props.poemObj)
+  }
+
   render() {
     return (
       <div>
@@ -32,7 +36,9 @@ class Poem extends React.Component {
         {this.props.favorite || this.state.fav ? null : <button
           onClick={this.handleAddFavClick}
         >Favorite</button>}
-        
+        {this.props.favorite ? null : <button
+          onClick={this.handleDeletePoem}
+        >Delete</button>}
       </div>
     );
   }

@@ -16,6 +16,7 @@ class App extends React.Component {
     fetch("http://localhost:6001/poems")
     .then(response => response.json())
     .then(data => this.setState({poems: data}))
+    .catch( e => console.error(e))
   }
 
   handleClick = () => {
@@ -42,14 +43,31 @@ class App extends React.Component {
         poems: [...previousState.poems, poemObj]
       })
     ))
+    .catch( e => console.error(e))
+  }
+
+  removePoemHandler = (poemObj) => {
+    let remainingPoems = this.state.poems.filter(
+      poem => poem.id !== poemObj.id
+    )
+    let options = {
+      method: "DELETE"
+    }
+    fetch("http://localhost:6001/poems/" + poemObj.id, options)
+    .then(response => response.json())
+    .then(this.setState({
+      poems: remainingPoems
+    }))
+    .catch( e => console.error(e))
   }
 
   addFavorite = (poemObj) => {
-    console.log("adding fav: ", poemObj)
     this.setState( previousState => ({
       favoritePoems: [...previousState.favoritePoems, poemObj]
     }))
   }
+
+
 
   render() {
     return (
@@ -66,6 +84,7 @@ class App extends React.Component {
         <PoemsContainer 
           poems={this.state.poems}
           addFavorite={this.addFavorite} 
+          removePoemHandler={this.removePoemHandler}
         />
       </div>
     );
