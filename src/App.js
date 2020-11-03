@@ -24,17 +24,9 @@ class App extends React.Component {
   }
 
   submitHandler = (newPoem) => {
-    fetch("http://localhost:6001/poems", {
-      method: "POST",
-      headers: {
-        "content-type": "application/json"
-      },
-      body: JSON.stringify(newPoem)
-    })
     this.setState({
       poems: [...this.state.poems, newPoem]
     })
-
   }
   
   render() {

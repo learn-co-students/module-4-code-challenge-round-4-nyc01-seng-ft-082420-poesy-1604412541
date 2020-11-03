@@ -27,26 +27,14 @@
     {
       "title": "new poem",
       "author": "new author",
-      "content": "it's a poem!",
+      "content": "it's a good poem",
       "id": 5
     },
     {
       "title": "another poem",
       "author": "second author",
-      "content": "peemmmmm",
+      "content": "this is a bad poem",
       "id": 6
-    },
-    {
-      "title": "pem",
-      "author": "poem",
-      "content": "alsdgasdg",
-      "id": 7
-    },
-    {
-      "title": "asdgasdg",
-      "author": "",
-      "content": "",
-      "id": 8
     }
   ]
 }
