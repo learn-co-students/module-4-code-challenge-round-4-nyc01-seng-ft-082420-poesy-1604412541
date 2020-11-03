@@ -10,6 +10,7 @@ class NewPoemForm extends React.Component {
           content:e.target[2].value,
           author:e.target[1].value
         }
+        // had to play around with numbers to get title and author to actually match 
 
         // console.log(object)
         // console.log(e.target[1].value)

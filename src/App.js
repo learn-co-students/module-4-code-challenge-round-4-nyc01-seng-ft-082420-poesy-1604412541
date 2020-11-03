@@ -6,6 +6,7 @@ const BASE_URL = 'http://localhost:6001/poems/'
 class App extends React.Component {
 
   componentDidMount(){
+    // got base_url from Readme / above 
   fetch(BASE_URL)
   .then(response => response.json())
   .then(data => this.setState({poems: data}))
