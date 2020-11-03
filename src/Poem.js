@@ -14,6 +14,14 @@ class Poem extends React.Component {
     this.props.deleteHandler(this.props.poem)
   }
 
+  localFavHandler = () => {
+    this.props.addToFavs(this.props.poem)
+  }
+
+  localUnfaveHandler = () => {
+    this.props.unfaveHandler(this.props.poem)
+  }
+
   render() {
     return (
       <div>
@@ -22,8 +30,9 @@ class Poem extends React.Component {
         <p>
           <strong>- By {this.props.poem.author}</strong>
         </p>
-        <button onClick={this.clickHandler}>{this.state.read ? 'Mark as unread' : 'Mark as read'}</button>
-        <button onClick={this.localDeleteHandler}>Delete</button>
+        {this.props.deleteHandler ? <button onClick={this.clickHandler}>{this.state.read ? 'Mark as unread' : 'Mark as read'}</button> : null}
+        {this.props.deleteHandler ? <button onClick={this.localDeleteHandler}>Delete</button> : null}
+        {this.props.deleteHandler ? <button onClick={this.localFavHandler}>★</button> : <button onClick={this.localUnfaveHandler}>Unfave</button>}
       </div>
     );
   }

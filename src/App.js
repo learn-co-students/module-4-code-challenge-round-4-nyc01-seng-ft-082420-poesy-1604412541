@@ -2,16 +2,26 @@ import React from "react";
 import "./App.css";
 import PoemsContainer from "./PoemsContainer";
 import NewPoemForm from "./NewPoemForm";
+import FavoritesContainer from './FavoritesContainer'
+
 
 class App extends React.Component {
 
   state = {
     poems: [],
-    showForm: false
+    showForm: false,
+    favs: []
   }
 
   toggleForm = () => {
     this.setState((prev) => ({showForm: !prev.showForm}))
+  }
+
+  unfaveHandler = (poem) => {
+    const newFavs = [...this.state.favs]
+    const index = newFavs.findIndex( p => p.id === poem.id)
+    newFavs.splice(index, 1)
+    this.setState(() => ({favs: newFavs}))
   }
   
   deletePoem = (poem) => {
@@ -56,6 +66,16 @@ class App extends React.Component {
     .catch(error => console.log(error.message))
   }
 
+  addToFavs = (poem) => {
+    if (this.state.favs.filter( p => p.id === poem.id).length > 0) {
+      return
+    } else {
+      this.setState( (prev) => ({
+        favs: [...prev.favs, poem]
+      }))
+    }
+  }
+
   render() {
     return (
       <div className="app">
@@ -63,7 +83,8 @@ class App extends React.Component {
           <button onClick={this.toggleForm}>Show/hide new poem form</button>
           {this.state.showForm ? <NewPoemForm submitHandler={this.addNewPoem}/> : null}
         </div>
-        <PoemsContainer deleteHandler={this.deletePoem} poems={this.state.poems}/>
+        <PoemsContainer deleteHandler={this.deletePoem} poems={this.state.poems} addToFavs={this.addToFavs}/>
+        <FavoritesContainer poems={this.state.favs} unfaveHandler={this.unfaveHandler} />
       </div>
     );
   }
