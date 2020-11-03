@@ -41,7 +41,7 @@ class App extends React.Component {
             {this.state.clicked ? <NewPoemForm submitHandler={this.submitHandler}/> : console.log("must click form to display")}
           {/* {false && <NewPoemForm submitHandler={this.submitHandler} onClick={this.updateClickHandler}/>} */}
         </div>
-        <PoemsContainer />
+        <PoemsContainer/>
       </div>
     );
   }
