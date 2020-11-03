@@ -1,5 +1,7 @@
 # Module 4 Code Challenge: Poesy
 
+Soroosh Golbabae
+
 ## Demo
 
 Use this gif as an example of how the app should work.
@@ -31,7 +33,7 @@ These are the routes you will need:
 
 As a user:
 
-1. When the app starts, I can see all currently created poems.
+1. √ When the app starts, I can see all currently created poems.
 2. I can show/hide the form to create new poems.
 3. I can create poems and they are still there when I refresh the page.
 4. I can mark poems as read which will change the text of that button to "Mark as unread".
