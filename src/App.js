@@ -4,7 +4,9 @@ import PoemsContainer from "./PoemsContainer";
 import NewPoemForm from "./NewPoemForm";
 
 class App extends React.Component {
+  baseURL = "http://localhost:6001/poems/"
 state={
+  api:[],
   formHide:false,
   newPoem:{},
   hasNew:false
@@ -12,15 +14,32 @@ state={
 showForm=()=>{
   this.setState(prevstate=>({formHide:!prevstate.formHide}))
 }
+  componentDidMount() {
+    fetch(this.baseURL)
+      .then(resp => resp.json())
+      .then(poems => this.setState({ api: poems }))
+  }
+  addnewPoem = () => {
+    console.log(this.props.hasNew)
+ 
 
-submitHandler=(poem)=>{
-  console.log(poem)
-  this.setState({newPOem:poem, hasNew:true})
+  }
+
+submitHandler=(newPoem)=>{
+  console.log(newPoem)
+  fetch(this.baseURL, {
+    method: "POST",
+    headers: {
+      "content-type": "application/json",
+      accpets: "application/json"
+    },
+    body: JSON.stringify(newPoem)
+  })
+    .then(resp => resp.json())
+    .then(poem => this.setState(prevState => ({ api: [...prevState.api, poem] })))
+    .catch(console.log)
 } 
 
-changeNew=()=>{
-  this.setState({hasNew:false})
-}
 
   render() {
     return (
@@ -30,7 +49,7 @@ changeNew=()=>{
           {this.state.formHide? <NewPoemForm submitHandler={this.submitHandler}/> : null}
           {console.log(this.state.hasNew)}
         </div>
-        <PoemsContainer newPoem={this.state.newPoem} hasNew={this.state.hasNew} changeNew={this.changeNew}/>
+        <PoemsContainer poems={this.state.api}/>
       </div>
     );
   }
