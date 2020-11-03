@@ -16,12 +16,16 @@ class NewPoemForm extends React.Component {
 
   submitHandler = event => {
     event.preventDefault()
-    this.props.submitHandler(this.state)
-    this.setState({
-      title: "",
-      author: "",
-      content: ""
-    })
+    if(this.state.title === "" || this.state.author === "" || this.state.content === "") {
+      console.log("Please do not leave the poem form empty!")
+    } else {
+      this.props.submitHandler(this.state)
+      this.setState({
+        title: "",
+        author: "",
+        content: ""
+      })
+    }
   }
 
   render() {
