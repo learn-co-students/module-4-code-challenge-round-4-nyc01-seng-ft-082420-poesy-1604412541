@@ -28,6 +28,10 @@ class App extends React.Component {
     }))
   }
 
+/* submitHandler() will grab the information as an arg and create a new object */
+
+/* createPoem() will fetch and post the new poem, and set the poems key to include this new poem*/
+
   render() {
     return (
       <div className="app">
