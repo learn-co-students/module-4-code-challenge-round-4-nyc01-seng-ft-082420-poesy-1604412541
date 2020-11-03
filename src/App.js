@@ -41,6 +41,20 @@ class App extends React.Component {
     })
   }
 
+  deleteHandler = (poemToDelete) => {
+    let newArray = [...this.state.poems]
+    let deletedPoemArray = newArray.filter(poem => poem.id !== poemToDelete.id)
+    this.setState({ poems: deletedPoemArray})
+
+    fetch(`http://localhost:6001/poems/${poemToDelete.id}`,{
+      method: "DELETE",
+      headers: {
+        "content-type": "application/json",
+        accepts: "application/json"
+      }
+    })
+  }
+
   render() {
     console.log(this.state.poems)
     return (
@@ -49,7 +63,7 @@ class App extends React.Component {
           <button onClick={this.handleClick}>Show/hide new poem form</button>
           {this.state.clicked && <NewPoemForm submitHandler={this.submitHandler}/>}
         </div>
-        <PoemsContainer poems={this.state.poems}/>
+        <PoemsContainer deleteHandler={this.deleteHandler} poems={this.state.poems}/>
       </div>
     );
   }

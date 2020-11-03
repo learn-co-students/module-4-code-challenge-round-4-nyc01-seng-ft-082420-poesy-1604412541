@@ -12,6 +12,10 @@ class Poem extends React.Component {
     }))
   }
 
+  handleDelete = () => {
+    this.props.deleteHandler(this.props.poem)
+  }
+
   render() {
     
     return (
@@ -22,6 +26,9 @@ class Poem extends React.Component {
           <strong>- By {this.props.poem.author}</strong>
         </p>
         <button onClick={this.handleClick}>{this.state.clicked ? "Mark as read" : "Mark as unread"}</button>
+        <br/>
+        <br/>
+        <button onClick={this.handleDelete}>Delete Poem</button>
       </div>
     );
   }
