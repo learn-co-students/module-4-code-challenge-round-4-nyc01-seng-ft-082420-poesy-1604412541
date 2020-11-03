@@ -13,6 +13,24 @@ class App extends React.Component {
   toggleForm = () => {
     this.setState((prev) => ({showForm: !prev.showForm}))
   }
+  
+  deletePoem = (poem) => {
+    const newPoems = [...this.state.poems]
+    const index = newPoems.findIndex( p => p.id === poem.id)
+    newPoems.splice(index, 1)
+    const configObj = {
+      method: "DELETE",
+      headers: {
+        "content-type" : "application/json",
+        accept: "application/json"
+      }
+    }
+    fetch(`http://localhost:6001/poems/${poem.id}`, configObj)
+    .then(res => res.json())
+    .then(this.setState(() => ({poems: newPoems})))
+    .catch(error => console.log(error.message))
+
+  }
 
   addNewPoem = (poem) => {
     const configObj = {
@@ -45,7 +63,7 @@ class App extends React.Component {
           <button onClick={this.toggleForm}>Show/hide new poem form</button>
           {this.state.showForm ? <NewPoemForm submitHandler={this.addNewPoem}/> : null}
         </div>
-        <PoemsContainer poems={this.state.poems}/>
+        <PoemsContainer deleteHandler={this.deletePoem} poems={this.state.poems}/>
       </div>
     );
   }

@@ -25,22 +25,10 @@
       "author": "Alan R. Turner."
     },
     {
-      "title": "Hello",
-      "author": "Jessica",
-      "content": "Hi this is a test.",
+      "title": "test",
+      "author": "j",
+      "content": "roses are red",
       "id": 5
-    },
-    {
-      "title": "Howdy",
-      "author": "Slabs",
-      "content": "Hello another test.",
-      "id": 6
-    },
-    {
-      "title": "HIh",
-      "author": "hi",
-      "content": "hihffff",
-      "id": 7
     }
   ]
 }

@@ -10,6 +10,10 @@ class Poem extends React.Component {
     this.setState( (prev) => ({read : !prev.read}))
   }
 
+  localDeleteHandler = () => {
+    this.props.deleteHandler(this.props.poem)
+  }
+
   render() {
     return (
       <div>
@@ -19,6 +23,7 @@ class Poem extends React.Component {
           <strong>- By {this.props.poem.author}</strong>
         </p>
         <button onClick={this.clickHandler}>{this.state.read ? 'Mark as unread' : 'Mark as read'}</button>
+        <button onClick={this.localDeleteHandler}>Delete</button>
       </div>
     );
   }
