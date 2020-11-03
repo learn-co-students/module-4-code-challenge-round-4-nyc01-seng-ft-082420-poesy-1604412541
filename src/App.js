@@ -13,7 +13,7 @@ class App extends React.Component {
 
 
   componentDidMount(){
-    fetch("http://localhost:6001/poems")
+    fetch("http://localhost:6001/poems/")
     .then(resp => resp.json())
     .then(poems => this.setState({ poems: poems}))
   }
@@ -24,6 +24,10 @@ class App extends React.Component {
     }))
   }
 
+  addPoem = (poemObj) =>{
+    this.setState({ poems: [poemObj, ...this.state.poems] })
+  }
+
 
 
   render() {
@@ -32,7 +36,7 @@ class App extends React.Component {
       <div className="app">
         <div className="sidebar">
           <button onClick={this.clickHandler} >Show/hide new poem form</button>
-          {this.state.clicked ?  <NewPoemForm /> : null }
+          {this.state.clicked ?  <NewPoemForm addPoem={this.addPoem} /> : null }
         </div>
         <PoemsContainer poems={this.state.poems} />
       </div>

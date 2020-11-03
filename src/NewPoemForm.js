@@ -2,7 +2,7 @@ import React from "react";
 
 class NewPoemForm extends React.Component {
 
-  state ={
+  state = {
     title: "",
     author: "",
     content: ""
@@ -14,7 +14,18 @@ class NewPoemForm extends React.Component {
   }
 
   submitHandler = (e) =>{
-
+    e.preventDefault()
+    
+    fetch("http://localhost:6001/poems/", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+        "accept": "application/json"
+      },
+      body: JSON.stringify(this.state)
+    })
+    .then(resp => resp.json())
+    .then(poem => (this.props.addPoem(poem)))    
   }
 
 
