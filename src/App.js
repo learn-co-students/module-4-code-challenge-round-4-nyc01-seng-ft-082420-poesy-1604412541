@@ -16,7 +16,7 @@ class App extends React.Component {
 
   formClickHandler = () => {
     this.setState((prevState) => ({
-      showForm: !prevState.showForm
+      showForm: !prevState.showForm    // toggles the form on click
     }))
   }
 
