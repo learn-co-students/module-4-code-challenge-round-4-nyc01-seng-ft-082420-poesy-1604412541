@@ -17,4 +17,4 @@ class Poem extends React.Component {
   }
 }
 
-export default Poem;
+export default Poem
