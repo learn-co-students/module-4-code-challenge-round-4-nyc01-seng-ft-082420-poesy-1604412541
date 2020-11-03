@@ -61,10 +61,14 @@ class App extends React.Component {
   }
 
   favoriteHandler = poem => {
-    let newFavorites = [...this.state.favorites, poem]
-    this.setState({
-      favorites: newFavorites
-    })
+    if(this.state.favorites.includes(poem)) {
+      console.log("This poem has alerady been favorited!")
+    } else {
+      let newFavorites = [...this.state.favorites, poem]
+      this.setState({
+        favorites: newFavorites
+      })
+    }
   }
 
   deleteHandler = poemId => {
