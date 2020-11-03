@@ -20,12 +20,6 @@ class App extends React.Component {
     })
   }
 
-  displayPoems = () => {
-    let poemsToDisplay = [...this.state.poems]
-
-
-    return poemsToDisplay
-  }
 
   handleClick = () => {
     this.setState(prevState => ({
@@ -70,7 +64,7 @@ class App extends React.Component {
   }
 
   render() {
-    console.log(this.state.poems)
+    
     return (
       <div className="app">
         <div className="sidebar">
@@ -81,7 +75,7 @@ class App extends React.Component {
             <hr/>
           <FavoritesContainer favorites={this.state.favorites}/>
         </div>
-        <PoemsContainer addToFavorites={this.addToFavorites} deleteHandler={this.deleteHandler} poems={this.displayPoems()}/>
+        <PoemsContainer addToFavorites={this.addToFavorites} deleteHandler={this.deleteHandler} poems={this.state.poems}/>
         
       </div>
     );
