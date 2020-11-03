@@ -34,7 +34,7 @@ class Poem extends React.Component {
         </p>
         <div onClick={this.clickHandler}>
         {this.state.clicked ? <button>Mark as unread</button> : <button>Mark as read</button> } 
-        </div><button onClick={this.deleteHandler}>Delete Poem</button>
+        </div><button class="delete" onClick={this.deleteHandler}>Delete Poem</button>
       </div>
     );
   }
