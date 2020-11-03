@@ -10,6 +10,12 @@ class App extends React.Component {
     showForm: false
   }
 
+  addNewPoem = (newPoem) => {
+    this.setState({
+      poems: [...this.state.poems, newPoem]
+    })
+  }
+
   renderPoems = () => {
     return this.state.poems
   }
@@ -26,9 +32,9 @@ class App extends React.Component {
       <div className="app">
         <div className="sidebar">
           <button onClick = {this.formClickHandler}>Show/hide new poem form</button>
-          {this.state.showForm ?  <NewPoemForm /> : false }
+          {this.state.showForm ?  <NewPoemForm addPoem = {this.addNewPoem}/> : false }
         </div>
-        <PoemsContainer poems = {arrayOfPoems}/>
+        <PoemsContainer poems = {arrayOfPoems} />
       </div>
     );
   }

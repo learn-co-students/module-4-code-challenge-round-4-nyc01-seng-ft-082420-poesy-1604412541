@@ -10,7 +10,20 @@ class NewPoemForm extends React.Component {
 
   submitHandler = (e) => {
     e.preventDefault()
-    // console.log('submit')
+    let options = {
+      method: "POST",
+      headers: {
+        "accepts" : "application/json",
+        "content-type" : "application/json"
+      },
+      body: JSON.stringify(this.state)
+    }
+
+    fetch("http://localhost:6001/poems", options)
+    .then(r=>r.json())
+    .then(newPoem => this.props.addPoem(newPoem))
+
+
 
   }
 
