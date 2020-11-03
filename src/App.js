@@ -6,8 +6,7 @@ import NewPoemForm from "./NewPoemForm";
 class App extends React.Component {
   state={
     poems:[],
-    clicked: false,
-    delete:''
+    clicked: false
   }
 
   componentDidMount(){

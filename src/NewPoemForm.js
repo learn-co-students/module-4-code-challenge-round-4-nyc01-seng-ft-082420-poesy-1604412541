@@ -10,6 +10,7 @@ class NewPoemForm extends React.Component {
   submitHandler = e =>{
     e.preventDefault()
 
+    let{title, content, author} = this.state
     const options={
       method:"POST",
       headers:{
@@ -17,9 +18,9 @@ class NewPoemForm extends React.Component {
         Accept: "application/json"
       },
       body: JSON.stringify({
-        title: this.state.title,
-        content: this.state.content,
-        author: this.state.author
+        title: title,
+        content: content,
+        author: author
       })
     }
 
@@ -36,11 +37,12 @@ class NewPoemForm extends React.Component {
   }
 
   render() {
+    let{title, content, author} = this.state
     return (
       <form className="new-poem-form" onSubmit={this.submitHandler}>
-        <input name="title" placeholder="Title" value={this.state.title} onChange={this.changeHandler}/>
-        <input name="author" placeholder="Author" value={this.state.author} onChange={this.changeHandler}/>
-        <textarea name="content" placeholder="Write your masterpiece here..." rows={10}  value={this.state.content} onChange={this.changeHandler}/>
+        <input name="title" placeholder="Title" value={title} onChange={this.changeHandler}/>
+        <input name="author" placeholder="Author" value={author} onChange={this.changeHandler}/>
+        <textarea name="content" placeholder="Write your masterpiece here..." rows={10}  value={content} onChange={this.changeHandler}/>
         <input type="submit" value="Share your masterpiece" />
       </form>
     );
