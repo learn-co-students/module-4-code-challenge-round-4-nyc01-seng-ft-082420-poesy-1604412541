@@ -29,6 +29,12 @@
       "content": "Dobby is a free elf.",
       "author": "Ariba Khan",
       "id": 5
+    },
+    {
+      "title": "The Cat in the Hat",
+      "content": "One cat two cat idk?",
+      "author": "Dr.Seuss",
+      "id": 6
     }
   ]
 }

@@ -27,6 +27,7 @@ class Poem extends React.Component {
           <strong>{poem.author} </strong>
         </p>
         <button onClick={this.poemRead}>{buttonText}</button>
+        <button onClick={() => this.props.favoritePoem(poem)}>Favorite</button>
         
       </div>
     );
