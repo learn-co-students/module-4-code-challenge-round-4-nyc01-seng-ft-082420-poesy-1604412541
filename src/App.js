@@ -30,7 +30,7 @@ class App extends React.Component {
   }
 
   deletePoem = (poemToDelete) => {
-    return this.setState({
+    this.setState({
       poems: this.state.poems.filter(poem => poem.id !== poemToDelete.id)
     })
   }
