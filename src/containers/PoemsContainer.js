@@ -1,10 +1,10 @@
 import React from "react";
 import Poem from "../components/Poem";
 
-const PoemsContainer = ({poems, addFav}) => {
+const PoemsContainer = ({poems, addFav, delPoem}) => {
 
   const renderPoems = () => {
-    return poems.map((poem) => <Poem key={poem.id} poem={poem} addFav={addFav}/>)
+    return poems.map((poem) => <Poem key={poem.id} poem={poem} addFav={addFav} delPoem={delPoem}/>)
   }
 
   return (

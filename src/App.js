@@ -52,6 +52,20 @@ class App extends React.Component {
     this.setState({favs: updatedFavs})
   }
 
+  deleteHandler = delPoem => {
+    let updatedPoems = this.state.poems.filter(poem => poem.id !== delPoem.id)
+
+    fetch(`http://localhost:6001/poems/${delPoem.id}`, {
+      method: "DELETE",
+      headers: {
+        "content-type": "application/json",
+        accepts: "application/json"
+      }
+    })
+      .then(resp => resp.json())
+      .then(this.setState({poems: updatedPoems}))
+  }
+
 
   render() {
     return (
@@ -60,7 +74,7 @@ class App extends React.Component {
           <button onClick={this.toggleForm} >Show/hide new poem form</button>
           {this.state.showForm && <NewPoemForm createPoem={this.createPoem}/>}
         </div>
-        <PoemsContainer poems={this.state.poems} addFav={this.addToFavs} />
+        <PoemsContainer poems={this.state.poems} addFav={this.addToFavs} delPoem={this.deleteHandler} />
         <FavsContainer favs={this.state.favs} delFav={this.delFromFavs} />
       </div>
     );
