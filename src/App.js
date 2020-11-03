@@ -6,7 +6,8 @@ import NewPoemForm from "./NewPoemForm";
 class App extends React.Component {
 
   state = {
-    poems: []
+    poems: [],
+    showForm: false
   }
 
   componentDidMount(){
@@ -15,12 +16,40 @@ class App extends React.Component {
     .then(data => this.setState({poems: data}))
   }
 
+  handleClick = () => {
+    this.setState( previousState => ({
+      showForm: !previousState.showForm
+    }))
+  }
+
+  newPoemSubmitHandler = (newPoemObj) => {
+
+    let options = {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+        "accept": "application/json"
+      },
+      body: JSON.stringify(newPoemObj)
+    }
+
+    fetch("http://localhost:6001/poems", options)
+    .then(response => response.json())
+    .then(poemObj => this.setState(
+      previousState => ({
+        poems: [...previousState.poems, poemObj]
+      })
+    ))
+  }
+
   render() {
     return (
       <div className="app">
         <div className="sidebar">
-          <button>Show/hide new poem form</button>
-          {false && <NewPoemForm />}
+          <button
+            onClick={this.handleClick}
+          >Show/hide new poem form</button>
+          {this.state.showForm ? <NewPoemForm newPoemSubmitHandler={this.newPoemSubmitHandler} /> : null }
         </div>
         <PoemsContainer poems={this.state.poems} />
       </div>
