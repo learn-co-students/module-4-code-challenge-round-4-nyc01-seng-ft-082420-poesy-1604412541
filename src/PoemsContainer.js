@@ -1,13 +1,29 @@
 import React from "react";
 import Poem from "./Poem";
 
+
+
+
+
+
 class PoemsContainer extends React.Component {
+
+  
+
+  renderPoems = () => {
+    return this.state.poems.map((poemPojo) => 
+      <Poem key={poemPojo.id} poem={poemPojo}/>
+    
+    )
+  }
+
   render() {
     return (
       <div className="poems-container">
-        {
-          // render poems here
-        }
+        {<Poem/>}
+        <div>
+          {this.renderPoems()}
+        </div>
       </div>
     );
   }
