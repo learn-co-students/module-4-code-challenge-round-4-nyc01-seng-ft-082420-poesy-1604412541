@@ -26,7 +26,8 @@ class NewPoemForm extends React.Component {
     })
     .then(resp => resp.json())
     .then((newPoem) => {
-      console.log(newPoem)
+      // console.log(newPoem)
+      this.props.addNewPoem(newPoem)
     })
   }
   render() {
