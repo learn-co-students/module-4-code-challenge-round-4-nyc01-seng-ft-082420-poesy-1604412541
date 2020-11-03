@@ -2,12 +2,14 @@ import React from "react";
 import "./App.css";
 import PoemsContainer from "./PoemsContainer";
 import NewPoemForm from "./NewPoemForm";
+import FavoritesContainer from './FavoritesContainer'
 
 class App extends React.Component {
 
   state = {
     poems: [],
-    clicked: false
+    clicked: false,
+    favorites: []
   }
 
   componentDidMount() {
@@ -16,6 +18,13 @@ class App extends React.Component {
     .then(poems => {
       this.setState({ poems: poems })
     })
+  }
+
+  displayPoems = () => {
+    let poemsToDisplay = [...this.state.poems]
+
+
+    return poemsToDisplay
   }
 
   handleClick = () => {
@@ -55,6 +64,11 @@ class App extends React.Component {
     })
   }
 
+  addToFavorites = (poemToFavorite) => {
+    let newArray = [...this.state.favorites, poemToFavorite]
+    this.setState({ favorites: newArray })
+  }
+
   render() {
     console.log(this.state.poems)
     return (
@@ -62,8 +76,13 @@ class App extends React.Component {
         <div className="sidebar">
           <button onClick={this.handleClick}>Show/hide new poem form</button>
           {this.state.clicked && <NewPoemForm submitHandler={this.submitHandler}/>}
+            <br/>
+            <br/>
+            <hr/>
+          <FavoritesContainer favorites={this.state.favorites}/>
         </div>
-        <PoemsContainer deleteHandler={this.deleteHandler} poems={this.state.poems}/>
+        <PoemsContainer addToFavorites={this.addToFavorites} deleteHandler={this.deleteHandler} poems={this.displayPoems()}/>
+        
       </div>
     );
   }
