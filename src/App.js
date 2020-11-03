@@ -56,13 +56,12 @@ class App extends React.Component {
     })
   }
 
-/* Delete stretch goals - create a button in poem. OnClick of that button will take the ID
-of that poem object, pass up through props to PoemContainer, then through app. A grandparent function,
+/* Delete stretch goals - OnClick of delete button in Poem will take the ID
+of that poem object, pass up through props to PoemContainer, then to App. A function,
 deletePoem will take in that id as an argument, then fetch the database, delete as method, create a new array,
 filtering for that id and returning those objects that do not match that id.
 
 Kept getting a TypeError for the fetch, so if I had time/was core deliverable, would debug
-
 
   deleteHandler = (deletedPoemId) => {
     fetch(`http://localhost:6001/poems/${deletedPoemId}`, {
