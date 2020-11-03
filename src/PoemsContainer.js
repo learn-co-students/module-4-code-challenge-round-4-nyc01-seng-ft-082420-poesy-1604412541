@@ -2,11 +2,27 @@ import React from "react";
 import Poem from "./Poem";
 
 class PoemsContainer extends React.Component {
+
+  state={
+    poems: []
+  }
+
+  componentDidMount(){
+    fetch("http://localhost:6001/poems")
+    .then(response => response.json())
+    .then(poems => this.setState({ poems}))
+  }
+
+  renderPoems = () => {
+    return this.state.poems.map((el) => < Poem key={el.id} poem={el} />)
+  }
+
   render() {
+    // console.log(this.state)
     return (
       <div className="poems-container">
         {
-          // render poems here
+          this.renderPoems()
         }
       </div>
     );
