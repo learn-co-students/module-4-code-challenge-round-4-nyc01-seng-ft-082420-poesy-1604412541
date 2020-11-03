@@ -7,7 +7,7 @@ state={
 }
 
 renderPoems=()=>{
-  return this.props.poems.map(poem=><Poem key={poem.id} poem={poem}/>)
+  return this.props.poems.map(poem => <Poem key={poem.id} poem={poem} favHandle={this.favHandle}/>)
 }
 
   render() {

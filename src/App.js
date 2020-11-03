@@ -18,7 +18,9 @@ showForm=()=>{
   }
   addnewPoem = () => {
     console.log(this.props.hasNew)
- 
+  }
+
+  favHandle=()=>{
 
   }
 
@@ -46,7 +48,7 @@ submitHandler=(newPoem)=>{
           {this.state.formHide? <NewPoemForm submitHandler={this.submitHandler}/> : null}
           {console.log(this.state.hasNew)}
         </div>
-        <PoemsContainer poems={this.state.api}/>
+        <PoemsContainer poems={this.state.api} favHandle={this.favHandle}/>
       </div>
     );
   }
