@@ -33,14 +33,13 @@ class App extends React.Component {
     })
   }
 
-
   deletePoem = (id) => {
-    let newPoems = this.state.poemApi.filter((poem) => {
+    let newPoemAfterDelete = this.state.poemApi.filter((poem) => {
       return poem.id !== id
-    )}
-    this.setState({
-      poemApi: newPoems
     })
+    this.setState({
+      poemApi: newPoemAfterDelete
+  })
   }
 
   render() {
