@@ -3,11 +3,8 @@ import Poem from "./Poem";
 
 class PoemsContainer extends React.Component {
 state={
-  api:[],
   hasNew:false
 }
-
-
 
 renderPoems=()=>{
   return this.props.poems.map(poem=><Poem key={poem.id} poem={poem}/>)

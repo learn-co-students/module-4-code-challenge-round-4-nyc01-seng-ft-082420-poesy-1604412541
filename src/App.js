@@ -6,10 +6,7 @@ import NewPoemForm from "./NewPoemForm";
 class App extends React.Component {
   baseURL = "http://localhost:6001/poems/"
 state={
-  api:[],
-  formHide:false,
-  newPoem:{},
-  hasNew:false
+  api:[]
 }
 showForm=()=>{
   this.setState(prevstate=>({formHide:!prevstate.formHide}))
