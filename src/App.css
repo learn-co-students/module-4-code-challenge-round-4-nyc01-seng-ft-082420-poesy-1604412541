@@ -72,7 +72,7 @@ button {
 
 .fav-container {
   border: solid black 1px;
-  padding: 1em;
   display: flex;
   flex-direction: column;
+  margin-top: 0em;
 }

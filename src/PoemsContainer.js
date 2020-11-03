@@ -5,7 +5,7 @@ class PoemsContainer extends React.Component {
 
   renderPoems = () => {
     let allPoems = this.props.poems
-    return allPoems.map(poem => <Poem key={poem.id} poem={poem} favoriteHandler={this.props.favoriteHandler} />)
+    return allPoems.map(poem => <Poem key={poem.id} poem={poem} deleteHandler={this.props.deleteHandler} favoriteHandler={this.props.favoriteHandler} />)
   }
 
   render() {

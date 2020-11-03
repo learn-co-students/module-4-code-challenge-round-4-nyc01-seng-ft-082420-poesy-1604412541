@@ -27,6 +27,7 @@ class App extends React.Component {
     .then(poems => {
       this.setState({poems: poems})
     })
+    .catch(console.log)
   }
 
   changeForm = () => {
@@ -45,8 +46,7 @@ class App extends React.Component {
       },
       body: JSON.stringify(newPoem)
     }
-    // console.log(poem)
-    // this.changeForm()
+
     fetch("http://localhost:6001/poems", options)
     .then(resp => resp.json())
     .then(createdPoem => {
@@ -54,6 +54,7 @@ class App extends React.Component {
       this.setState({
         poems: newPoems
       })
+      this.changeForm()
     })
     .catch(console.log)
 
@@ -66,8 +67,28 @@ class App extends React.Component {
     })
   }
 
+  deleteHandler = poemId => {
+    let deleteId = poemId
+    let currentPoems = this.state.poems
+    let filteredPoems = currentPoems.filter(poem => poem.id !== deleteId)
+    let options = {
+      method: "DELETE",
+      headers: {
+        "content-type": "application/json",
+        Accept: "application/json"
+      }
+    }
+    fetch("http://localhost:6001/poems/" + deleteId, options)
+    .then(resp => resp.json())
+    .then(
+      this.setState({
+        poems: filteredPoems
+      })
+    )
+    .catch(console.log)
+  }
+
   render() {
-    // console.log(this.state.poems)
     return (
       <div className="app">
         <div className="sidebar">
@@ -75,7 +96,7 @@ class App extends React.Component {
           {this.state.form ? <NewPoemForm changeHandler={this.changeHandler} submitHandler={this.submitHandler} /> : null}
           <Favorites poems={this.state.favorites}/>
         </div>
-        <PoemsContainer favoriteHandler={this.favoriteHandler} poems={this.state.poems}/>
+        <PoemsContainer deleteHandler={this.deleteHandler} favoriteHandler={this.favoriteHandler} poems={this.state.poems}/>
       </div>
     );
   }

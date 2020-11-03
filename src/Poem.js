@@ -14,7 +14,10 @@ class Poem extends React.Component {
 
   favoriteHandler = () => {
     this.props.favoriteHandler(this.props.poem)
-    // console.log(this.props.poem)
+  }
+
+  deleteHandler = () => {
+    this.props.deleteHandler(this.props.poem.id)
   }
 
   render() {
@@ -27,6 +30,7 @@ class Poem extends React.Component {
         </p>
         <button onClick={this.readPoem} >{this.state.read ? "Mark as unread" : "Mark as read"}</button>
         <button onClick={this.favoriteHandler}>Add to Favorites</button>
+        <button onClick={this.deleteHandler}>Delete</button>
       </div>
     );
   }
