@@ -16,7 +16,6 @@ class PoemsContainer extends React.Component {
   }
 
   renderPoems  = () => this.state.poems.map((poem => {
-    console.log(this.state.poems)
 
     return <Poem key={poem.id} poem={poem}/>
   })
