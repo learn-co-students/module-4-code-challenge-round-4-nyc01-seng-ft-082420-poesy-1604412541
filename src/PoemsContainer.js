@@ -2,7 +2,8 @@ import React from "react";
 import Poem from "./Poem";
 
 class PoemsContainer extends React.Component {
-
+// my API should be help in App - this is probably why the POST doesn't update DOM automatically
+// and page needs to refresh in order to dispay new Poem
   state={
     poems: []
   }
