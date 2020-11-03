@@ -34,7 +34,7 @@ class App extends React.Component {
     return (
       <div className="app">
         <div className="sidebar">
-          <button onClick={this.showHideHandler}>Show/hide new poem form</button>
+          <button onClick={this.showHideHandler}>{!this.state.showForm ? "Show New Poem Form" : "Hide New Poem Form"}</button>
           {this.state.showForm && <NewPoemForm addPoem = {this.addPoem}/>}
         </div>
         <PoemsContainer poems = {this.state.poems}/>
