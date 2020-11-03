@@ -26,15 +26,27 @@
     },
     {
       "title": "new poem",
-      "author": "a cool writer",
-      "content": "this is my poem\n",
+      "author": "new author",
+      "content": "it's a poem!",
       "id": 5
     },
     {
       "title": "another poem",
-      "author": "another writer",
-      "content": "bad poem",
+      "author": "second author",
+      "content": "peemmmmm",
       "id": 6
+    },
+    {
+      "title": "pem",
+      "author": "poem",
+      "content": "alsdgasdg",
+      "id": 7
+    },
+    {
+      "title": "asdgasdg",
+      "author": "",
+      "content": "",
+      "id": 8
     }
   ]
 }

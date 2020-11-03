@@ -2,7 +2,7 @@ import React from "react";
 
 class Poem extends React.Component {
   render() {
-    let {title, content, author} = this.props.poem
+    let {key, title, content, author} = this.props.poem
     return (
       <div>
         <h3>{title}</h3>
