@@ -28,6 +28,12 @@ class App extends React.Component {
       poems: [...this.state.poems, newPoem]
     })
   }
+
+  deletePoem = (poemToDelete) => {
+    return this.setState({
+      poems: this.state.poems.filter(poem => poem.id !== poemToDelete.id)
+    })
+  }
   
   render() {
     console.log("rendered array: ", this.state.poems)
@@ -37,7 +43,7 @@ class App extends React.Component {
           <button onClick={this.formShowHideClickHandler}>Show/hide new poem form</button>
           {this.state.formShown && <NewPoemForm submitHandler={this.submitHandler}/>}
         </div>
-        <PoemsContainer poems={this.state.poems} />
+        <PoemsContainer poems={this.state.poems} deletePoem={this.deletePoem}/>
       </div>
     );
   }
