@@ -1,10 +1,12 @@
 import React from "react";
 import Poem from "./Poem";
 
-class PoemsContainer extends React.Component {
+//switched to functional component
 
-  renderPoems = () => {
-    return this.props.poems.map(poem => {
+const PoemsContainer = (props) => {
+
+  let renderPoems = (props) => {
+    return props.poems.map(poem => {
       return <Poem
         key = {poem.id}
         poem = {poem}
@@ -12,16 +14,39 @@ class PoemsContainer extends React.Component {
     })
   }
 
-  render() {
-    console.log(this.props)
+    console.log(props)
     return (
       <div className="poems-container">
         {
-        this.renderPoems()
+        renderPoems(props)
         }
       </div>
     );
-  }
 }
 
 export default PoemsContainer;
+
+// class PoemsContainer extends React.Component {
+//
+//   renderPoems = () => {
+//     return this.props.poems.map(poem => {
+//       return <Poem
+//         key = {poem.id}
+//         poem = {poem}
+//         />
+//     })
+//   }
+//
+//   render() {
+//     console.log(this.props)
+//     return (
+//       <div className="poems-container">
+//         {
+//         this.renderPoems()
+//         }
+//       </div>
+//     );
+//   }
+// }
+//
+// export default PoemsContainer;

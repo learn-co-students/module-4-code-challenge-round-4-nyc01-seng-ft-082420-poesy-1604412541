@@ -2,11 +2,13 @@ import React from "react";
 import "./App.css";
 import PoemsContainer from "./PoemsContainer";
 import NewPoemForm from "./NewPoemForm";
+import Favorites from "./Favorites"
 
 class App extends React.Component {
 
   state = {
     poems: [],
+    favs: [],
     showForm: false
   }
 
@@ -20,6 +22,10 @@ class App extends React.Component {
     return this.state.poems
   }
 
+  renderFavs = () => {
+    return this.state.favs
+  }
+
   formClickHandler = () => {
     this.setState((prevState) => ({
       showForm: !prevState.showForm    // toggles the form on click
@@ -28,6 +34,7 @@ class App extends React.Component {
 
   render() {
     let arrayOfPoems = this.renderPoems()
+    let arrayOfFavorites = this.renderFavs()
     return (
       <div className="app">
         <div className="sidebar">
@@ -35,6 +42,7 @@ class App extends React.Component {
           {this.state.showForm ?  <NewPoemForm addPoem = {this.addNewPoem}/> : false }
         </div>
         <PoemsContainer poems = {arrayOfPoems} />
+        <Favorites poems = {arrayOfFavorites} />
       </div>
     );
   }
