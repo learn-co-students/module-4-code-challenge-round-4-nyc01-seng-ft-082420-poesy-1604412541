@@ -7,7 +7,6 @@ class PoemsContainer extends React.Component {
     return (
       <div className="poems-container">
         {
-          // render poems here
           renderPoems
         }
       </div>
