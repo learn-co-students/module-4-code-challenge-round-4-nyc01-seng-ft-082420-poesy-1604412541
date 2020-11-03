@@ -3,7 +3,7 @@ import React from "react";
 class Poem extends React.Component {
 
   render() {
-    console.log(this.props.poem)
+    // console.log(this.props.poem)
     return (
       <div>
         <h3>{this.props.poem.title}</h3>
