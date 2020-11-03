@@ -14,6 +14,10 @@ class Poem extends React.Component {
     }))
   }
 
+  // localDeleteHandler = () => {
+  //   this.props.deleteHandler(this.props.poem.id)
+  // }
+
   render() {
     return (
       <div>
@@ -23,6 +27,7 @@ class Poem extends React.Component {
           <strong>- {this.props.poem.author}</strong>
         </p>
         <button onClick={this.changeHandler}>{this.state.clicked ? this.state.notReadText : this.state.readText}</button>
+        {/* <button onClick={this.localDeleteHandler}>Delete?</button> */}
       </div>
     );
   }
