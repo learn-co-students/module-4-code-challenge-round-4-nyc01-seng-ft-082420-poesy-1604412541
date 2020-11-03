@@ -8,6 +8,7 @@ class PoemsContainer extends React.Component {
     <Poem 
       key={poem.id}
       poemObj={poem}
+      addFavorite={this.props.addFavorite}
     />)
   }
 

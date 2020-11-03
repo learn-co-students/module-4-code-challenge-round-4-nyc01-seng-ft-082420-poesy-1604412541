@@ -17,7 +17,7 @@ As a user:
 
 <!-- 2. I can show/hide the form to create new poems. -->
 
-3. I can create poems and they are still there when I refresh the page.
+<!-- 3. I can create poems and they are still there when I refresh the page. -->
 
 <!-- 4. I can mark poems as read which will change the text of that button to "Mark as unread". -->
 
@@ -30,6 +30,7 @@ These deliverables are not required to pass the code challenge, but if you have 
 As a user:
 
 1. I can add a poem to my favourites and see it on a separate list.
+
 2. I can delete a poem and they are still gone when I refresh the page.
 
 ## Rubric
