@@ -2,12 +2,14 @@ import React from "react";
 import "./App.css";
 import PoemsContainer from "./containers/PoemsContainer";
 import NewPoemForm from "./components/NewPoemForm";
+import FavsContainer from "./containers/FavsContainer";
 
 class App extends React.Component {
 
   state={
     poems: [],
-    showForm: false
+    showForm: false,
+    favs: []
   }
 
   componentDidMount() {
@@ -38,6 +40,18 @@ class App extends React.Component {
       })
   }
 
+  addToFavs = addPoem => {
+    if(this.state.favs.includes(addPoem)) return
+
+    let updatedFavs = [...this.state.favs, addPoem]
+    this.setState({favs: updatedFavs})
+  }
+
+  delFromFavs = delPoem => {
+    let updatedFavs = this.state.favs.filter(poem => poem.id !== delPoem.id)
+    this.setState({favs: updatedFavs})
+  }
+
 
   render() {
     return (
@@ -46,7 +60,8 @@ class App extends React.Component {
           <button onClick={this.toggleForm} >Show/hide new poem form</button>
           {this.state.showForm && <NewPoemForm createPoem={this.createPoem}/>}
         </div>
-        <PoemsContainer poems={this.state.poems}/>
+        <PoemsContainer poems={this.state.poems} addFav={this.addToFavs} />
+        <FavsContainer favs={this.state.favs} delFav={this.delFromFavs} />
       </div>
     );
   }

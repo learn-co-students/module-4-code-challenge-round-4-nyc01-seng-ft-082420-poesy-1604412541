@@ -12,6 +12,18 @@ class Poem extends React.Component {
     }))
   }
 
+  favHandler = () => {
+    if(this.props.favorited) {
+      this.props.delFav(this.props.poem)
+    } else {
+      this.props.addFav(this.props.poem)
+    }
+  }
+
+  delHandler = () => {
+    this.props.delPoem(this.props.poem)
+  }
+
   render() {
     const {title, content, author} = this.props.poem
     return (
@@ -22,6 +34,8 @@ class Poem extends React.Component {
           <strong>- {author}</strong>
         </p>
         <button onClick={this.clickHandler}>{this.state.read ? 'Mark as unread' : 'Mark as read'}</button>
+        <button onClick={this.favHandler}>{this.props.favorited ? "Remove from Favorites" : "Add to Favorites"}</button>
+        <button onClick={this.delHandler}>Delete Poem</button>
       </div>
     );
   }
