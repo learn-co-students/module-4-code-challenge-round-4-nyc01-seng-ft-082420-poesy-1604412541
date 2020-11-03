@@ -1,11 +1,11 @@
 # Module 4 Code Challenge: Poesy
 
 ## Demo
-## Gabriel Hicks - NYC082420 - 11/03/20
 Use this gif as an example of how the app should work.
 
 ![Demo GIF](./demo.gif)
-
+## Gabriel Hicks - NYC082420 - 11/03/20
+I accidently left a bunch of dead code - SORRY
 ## Instructions
 
 Welcome to Poesy, where your poetry masterpieces come to life! Our old front-end team laid down the foundations for our app, but it looks like they forgot all the functionality!
