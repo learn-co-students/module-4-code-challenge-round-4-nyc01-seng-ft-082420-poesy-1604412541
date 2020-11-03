@@ -12,6 +12,11 @@ class Poem extends React.Component {
     }))
   }
 
+  favoriteHandler = () => {
+    this.props.favoriteHandler(this.props.poem)
+    // console.log(this.props.poem)
+  }
+
   render() {
     return (
       <div>
@@ -21,6 +26,7 @@ class Poem extends React.Component {
           <strong>- By {this.props.poem.author}</strong>
         </p>
         <button onClick={this.readPoem} >{this.state.read ? "Mark as unread" : "Mark as read"}</button>
+        <button onClick={this.favoriteHandler}>Add to Favorites</button>
       </div>
     );
   }

@@ -2,6 +2,7 @@ import React from "react";
 import "./App.css";
 import PoemsContainer from "./PoemsContainer";
 import NewPoemForm from "./NewPoemForm";
+import Favorites from './Favorites'
 
 class App extends React.Component {
 
@@ -10,7 +11,8 @@ class App extends React.Component {
     form: false,
     title: "",
     author: "",
-    content: ""
+    content: "",
+    favorites: []
   }
 
   changeHandler = event => {
@@ -57,6 +59,13 @@ class App extends React.Component {
 
   }
 
+  favoriteHandler = poem => {
+    let newFavorites = [...this.state.favorites, poem]
+    this.setState({
+      favorites: newFavorites
+    })
+  }
+
   render() {
     // console.log(this.state.poems)
     return (
@@ -64,8 +73,9 @@ class App extends React.Component {
         <div className="sidebar">
           <button onClick={this.changeForm}>Show/hide new poem form</button>
           {this.state.form ? <NewPoemForm changeHandler={this.changeHandler} submitHandler={this.submitHandler} /> : null}
+          <Favorites poems={this.state.favorites}/>
         </div>
-        <PoemsContainer poems={this.state.poems}/>
+        <PoemsContainer favoriteHandler={this.favoriteHandler} poems={this.state.poems}/>
       </div>
     );
   }
