@@ -1,7 +1,7 @@
 # Module 4 Code Challenge: Poesy
 
 ## Demo
-
+## Gabriel Hicks - NYC082420 - 11/03/20
 Use this gif as an example of how the app should work.
 
 ![Demo GIF](./demo.gif)
