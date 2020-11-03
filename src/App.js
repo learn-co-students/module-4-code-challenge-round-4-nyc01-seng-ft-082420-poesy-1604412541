@@ -31,6 +31,10 @@ class App extends React.Component {
     })
   }
 
+  deletePoem = (poem) => {
+    
+  }
+
   renderPoems = () => {
     return this.state.poems
   }
