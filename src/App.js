@@ -4,7 +4,6 @@ import PoemsContainer from "./PoemsContainer";
 import NewPoemForm from "./NewPoemForm";
 import FavoritesContainer from './FavoritesContainer'
 
-
 class App extends React.Component {
 
   state = {
@@ -12,6 +11,7 @@ class App extends React.Component {
     showForm: false,
     favs: []
   }
+
 
   toggleForm = () => {
     this.setState((prev) => ({showForm: !prev.showForm}))
@@ -39,7 +39,6 @@ class App extends React.Component {
     .then(res => res.json())
     .then(this.setState(() => ({poems: newPoems})))
     .catch(error => console.log(error.message))
-
   }
 
   addNewPoem = (poem) => {

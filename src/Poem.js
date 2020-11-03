@@ -3,7 +3,7 @@ import React from "react";
 class Poem extends React.Component {
 
   state = {
-    read: false
+    read: false,
   }
 
   clickHandler = () => {
@@ -30,6 +30,8 @@ class Poem extends React.Component {
         <p>
           <strong>- By {this.props.poem.author}</strong>
         </p>
+
+        {/* checking for deleteHandler screens for whether Poem is coming from FavoritesContainer or poemsContainer & shows buttons accordingly*/}
         {this.props.deleteHandler ? <button onClick={this.clickHandler}>{this.state.read ? 'Mark as unread' : 'Mark as read'}</button> : null}
         {this.props.deleteHandler ? <button onClick={this.localDeleteHandler}>Delete</button> : null}
         {this.props.deleteHandler ? <button onClick={this.localFavHandler}>★</button> : <button onClick={this.localUnfaveHandler}>Unfave</button>}
