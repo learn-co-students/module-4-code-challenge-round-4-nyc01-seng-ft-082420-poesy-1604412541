@@ -26,7 +26,6 @@ class App extends React.Component {
     this.setState({poems:[...this.state.poems, poem]})
   }
 
-
   render() {
     return (
       <div className="app">
