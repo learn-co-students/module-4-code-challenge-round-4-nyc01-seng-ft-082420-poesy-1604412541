@@ -13,6 +13,14 @@ class Poem extends React.Component {
     }))
   }
 
+  deleteHandler = (e) =>{
+    fetch(`http://localhost:6001/poems/${this.props.poem.id}`,{
+      method: "DELETE"
+    })
+    .then(resp => resp.json())
+    .then(resp => (this.props.deletePoem(this.props.poem)))
+  }
+
 
   render() {
 
@@ -25,8 +33,8 @@ class Poem extends React.Component {
           <strong>-{author}</strong>
         </p>
         <div onClick={this.clickHandler}>
-        {this.state.clicked ? <button>Mark as unread</button> : <button>Mark as read</button> }
-        </div>
+        {this.state.clicked ? <button>Mark as unread</button> : <button>Mark as read</button> } 
+        </div><button onClick={this.deleteHandler}>Delete Poem</button>
       </div>
     );
   }
